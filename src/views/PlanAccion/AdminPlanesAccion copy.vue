@@ -24,7 +24,7 @@
             <template v-slot:items="props">
               <td class="text-xs-left">{{ props.item.id_incidencia }}</td>
               <td class="text-xs-left">{{ props.item.ugb }}</td>
-              <td class="text-xs-left">PORVENIR-PASCO</td>
+              <td class="text-xs-left">LOCAL</td>
               <td class="text-xs-left">{{ props.item.fecha_prevista | dateFormat }}</td>
               <td class="text-xs-left">{{ props.item.fecha_realizada | dateFormat }}</td>
               <td class="text-xs-left">

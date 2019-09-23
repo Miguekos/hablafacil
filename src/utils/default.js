@@ -4,7 +4,7 @@ const defaultIncidente = {
   numero: 1,
   ugb: null,
   area: 0,
-  nameArea: "PORVENIR-PASCO",
+  nameArea: "LOCAL",
   local: 1,
   fecha: new Date().toISOString().substr(0, 10),
   responsable_del_registro: null,

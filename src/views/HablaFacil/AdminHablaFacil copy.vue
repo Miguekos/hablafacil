@@ -25,7 +25,7 @@
             <template v-slot:items="props">
               <td>{{ props.item.formatId }}</td>
               <td>{{ props.item.ugb }}</td>
-              <td>PORVENIR-PASCO</td>
+              <td>LOCAL</td>
               <td>{{ props.item.fecha | dateFormat }}</td>
               <td>{{ props.item.responsable_del_registro }}</td>
 

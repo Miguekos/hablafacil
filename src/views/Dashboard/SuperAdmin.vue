@@ -121,7 +121,7 @@ export default {
           "Cajamarquilla",
           "Juiz de Fora",
           "Tres Marias",
-          "Porvenir-PASCO"
+          "LOCAL"
         ],
         series: [
           {

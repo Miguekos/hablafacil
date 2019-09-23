@@ -97,7 +97,7 @@
             <template v-slot:items="props">
               <td class="text-xs-left">{{ props.item.id_incidencia }}</td>
               <td class="text-xs-left">{{ props.item.ugb }}</td>
-              <td class="text-xs-left">PORVENIR-PASCO</td>
+              <td class="text-xs-left">LOCAL</td>
               <td class="text-xs-left">{{ props.item.fecha_prevista | dateFormat }}</td>
               <td class="text-xs-left">{{ props.item.fecha_realizada | dateFormat }}</td>
               <td class="text-xs-left">
@@ -167,7 +167,7 @@ export default {
         "Contraloría",
         "Gerencia de Geología"
       ],
-      locals: ["Sin filtro", "PORVENIR-PASCO"],
+      locals: ["Sin filtro", "LOCAL"],
       responsables: [],
       potencial: ["Sin filtro", "1", "2", "3", "4", "5", "6"],
       riesgos: [

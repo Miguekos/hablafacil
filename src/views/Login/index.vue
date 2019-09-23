@@ -92,7 +92,7 @@ export default {
   },
   data: () => ({
     snackbar: false,
-    usuario: "daniela@nexa.com",
+    usuario: "usuario1@segur.com",
     recordarme: false,
     password: "123456",
     loading: false

@@ -21,7 +21,7 @@ try {
 const state = {
   areas: [],
   gerencias: [],
-  locales: [{ id: 1, text: "PORVENIR-PASCO" }],
+  locales: [{ id: 1, text: "LOCAL" }],
   personal: [],
   datos: defaultIncidente,
   listaIncidencias: []
