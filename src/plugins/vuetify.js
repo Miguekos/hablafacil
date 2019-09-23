@@ -3,7 +3,7 @@ import Vuetify from "vuetify/lib";
 import "../stylus/main.styl";
 Vue.use(Vuetify, {
   theme: {
-    primary: "#FF5722",
+    primary: "#314caa",
     secondary: "#005092"
   },
   customProperties: true,

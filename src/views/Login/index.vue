@@ -5,7 +5,7 @@
       <v-flex xs12 sm5 md4 order-xs-1 order-md2 class="mainLogin">
         <v-layout wrap row>
           <v-flex xs12 text-xs-center>
-            <v-img :src="require('@/assets/logo.jpg')" aspect-ratio="1" max-height="60" />
+            <!-- <v-img :src="require('@/assets/logo.jpg')" aspect-ratio="1" max-height="60" /> -->
           </v-flex>
           <v-flex xs12 text-xs-center>
             <h1 class="display-1 font-weight-black py-2">
