@@ -2,8 +2,17 @@ import { format } from "date-fns";
 import { defaultIncidente } from "../../utils/default.js";
 const user_hablafacil = JSON.parse(localStorage.getItem("user_nexa"))
 console.log("###################################")
-console.log(user_hablafacil.id)
-console.log("###################################")
+let urlcustom = "";
+console.log(user_hablafacil)
+if (user_hablafacil.role == 2 || user_hablafacil.role == 1) {
+  console.log("es rol 2 y 1")
+  urlcustom = "/tb_plan_accions"
+} else {
+  console.log("es otro rol")
+  urlcustom = `/tb_plan_accions?filter={"where":{"responsable_registro":"${
+    user_hablafacil.id
+  }"}}`
+}
 const state = {
   areas: [],
   gerencias: [],
@@ -90,9 +99,7 @@ const actions = {
     try {
       const response = await axios({
         // url: "/tb_incidencias",
-        url: `/tb_incidencias?filter={"where":{"responsable_del_registro":"${
-          user_hablafacil.id
-        }"}}`,
+        url: `${urlcustom}`,
         baseURL: process.env.VUE_APP_WEB_SERVER,
         method: "GET",
         headers: {
@@ -112,9 +119,7 @@ const actions = {
       console.log(state.datos);
       const response = await axios({
         // url: "/tb_incidencias",
-        url: `/tb_incidencias?filter={"where":{"responsable_del_registro":"${
-          user_hablafacil.id
-        }"}}`,
+        url: `${urlcustom}`,
         baseURL: process.env.VUE_APP_WEB_SERVER,
         method: "POST",
         headers: {

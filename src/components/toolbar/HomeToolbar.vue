@@ -108,6 +108,7 @@ export default {
       this.$router.push(url);
     },
     cerrarSesion() {
+      localStorage.removeItem("user_nexa");
       this.drawer = false;
       this.$store.commit("users/UPDATE_USER", {
         isAuth: false
