@@ -180,7 +180,7 @@ export default {
         series: [
           {
             name: "Concluidos",
-            data: []
+            data: ["40","20","34"]
           }
         ],
         height: "440"
@@ -200,19 +200,19 @@ export default {
         series: [
           {
             name: "Comportamiento de riesgo",
-            data: []
+            data: ["40","20","34"]
           },
           {
             name: "Condicion de riesgo",
-            data: []
+            data: ["40","20","34"]
           },
           {
             name: "Casi accidente",
-            data: []
+            data: ["40","20","34"]
           },
           {
             name: "Derecho a decir NO",
-            data: []
+            data: ["40","20","34"]
           }
         ],
         height: "300"
@@ -265,7 +265,7 @@ export default {
       series: [
         {
           name: "Concluidos",
-          data: []
+          data: ["40","20","34"]
         }
       ]
     };
