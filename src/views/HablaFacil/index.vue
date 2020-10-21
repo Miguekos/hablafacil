@@ -9,13 +9,13 @@
                 <b>REGISTRO DE INCIDENCIA</b>
               </v-tab>
               <v-tab-item :key="1">
-                <form @submit.prevent="goStep(1);">
+                <form @submit.prevent="goStep(1)">
                   <v-card>
                     <v-card-text>
                       <v-layout wrap row align-center>
                         <v-flex xs12 sm6>
                           <v-autocomplete
-                            :items="gerencias"
+                            :items="gerenciasitem"
                             item-text="gerencias"
                             item-value="id"
                             label="UGB"
@@ -30,7 +30,7 @@
                         </v-flex>
                         <v-flex xs12 sm6>
                           <v-autocomplete
-                            :items="areas"
+                            :items="areasitem"
                             item-text="area"
                             item-value="id_gerencia"
                             label="AREA"
@@ -86,16 +86,31 @@
                               v-model="datos.fecha"
                               no-title
                               locale="es"
-                              @input="menu2 = false;"
+                              @input="menu2 = false"
                             />
                           </v-menu>
                         </v-flex>
                         <v-flex xs12 sm6>
                           <v-autocomplete
+                            :items="responsables"
+                            item-text="responsable"
+                            item-value="id_responsable"
+                            label="Responsable"
+                            placeholder="Seleccionar responsables"
+                            v-model="datos.responsables"
+                            required
+                            v-validate="'required'"
+                            :error-messages="
+                              errors.collect('datos.responsables')
+                            "
+                            data-vv-name="datos.responsables"
+                            data-vv-as="responsables"
+                          />
+                        </v-flex>
+                        <!-- <v-flex xs12 sm6>
+                          <v-autocomplete
                             v-model="datos.responsable_del_registro"
-                            :items="personal"
-                            item-text="trabajador"
-                            item-value="id"
+                            note
                             label="Responsable"
                             v-validate="'required'"
                             :error-messages="
@@ -105,7 +120,7 @@
                             data-vv-as="Tipo"
                             required
                           />
-                        </v-flex>
+                        </v-flex> -->
 
                         <v-flex xs12 py-2>
                           <v-layout wrap row>
@@ -130,7 +145,10 @@
                               </h3>
                             </v-flex>
                             <v-flex xs12>
-                              <radio-group v-model="datos.riesgo" :items="itemsRiesgoAmbiente"></radio-group>
+                              <radio-group
+                                v-model="datos.riesgo"
+                                :items="itemsRiesgoAmbiente"
+                              ></radio-group>
                             </v-flex>
                           </v-layout>
                         </v-flex>
@@ -142,7 +160,10 @@
                               </h3>
                             </v-flex>
                             <v-flex xs12>
-                              <radio-group v-model="datos.riesgo" :items="itemsRiesgoSeguridad"></radio-group>
+                              <radio-group
+                                v-model="datos.riesgo"
+                                :items="itemsRiesgoSeguridad"
+                              ></radio-group>
                             </v-flex>
                           </v-layout>
                         </v-flex>
@@ -154,7 +175,10 @@
                               </h3>
                             </v-flex>
                             <v-flex xs12>
-                              <v-radio-group v-model="datos.potencial_de_gravedad" row>
+                              <v-radio-group
+                                v-model="datos.potencial_de_gravedad"
+                                row
+                              >
                                 <v-radio
                                   :value="item"
                                   :label="`${item}`"
@@ -166,10 +190,16 @@
                           </v-layout>
                         </v-flex>
                         <v-flex xs12>
-                          <v-textarea label="Descripción" v-model="datos.descripcion"></v-textarea>
+                          <v-textarea
+                            label="Descripción"
+                            v-model="datos.descripcion"
+                          ></v-textarea>
                         </v-flex>
                         <v-flex xs12>
-                          <v-switch v-model="datos.accion_de_bloqueo" label="Acción de bloqueo"></v-switch>
+                          <v-switch
+                            v-model="datos.accion_de_bloqueo"
+                            label="Acción de bloqueo"
+                          ></v-switch>
                           <v-textarea
                             v-if="datos.accion_de_bloqueo"
                             label="Acción de bloqueo"
@@ -212,9 +242,13 @@
         </v-card-text>
         <v-divider></v-divider>
         <v-card-actions>
-          <v-btn color="primary" flat @click="dialog = false;" small>Atras</v-btn>
+          <v-btn color="primary" flat @click="dialog = false" small
+            >Atras</v-btn
+          >
           <v-spacer></v-spacer>
-          <v-btn block color="primary" @click="goSave" :loading="loading" small>CONFIRMAR</v-btn>
+          <v-btn block color="primary" @click="goSave" :loading="loading" small
+            >CONFIRMAR</v-btn
+          >
         </v-card-actions>
       </v-card>
       <v-card v-else class="ld-modal">
@@ -224,7 +258,7 @@
               <h3 class="text-xs-center">
                 <b>
                   ¿Desea ejecutar un plan de acción para el incidente N°-{{
-                  this.datos.id | idNumero
+                    this.datos.id | idNumero
                   }}?
                 </b>
               </h3>
@@ -233,9 +267,13 @@
         </v-card-text>
         <v-divider></v-divider>
         <v-card-actions>
-          <v-btn color="primary" flat @click="dialog = false;" small>Atras</v-btn>
+          <v-btn color="primary" flat @click="dialog = false" small
+            >Atras</v-btn
+          >
           <v-spacer></v-spacer>
-          <v-btn block color="primary" @click="goPlan" :loading="loading" small>PLAN DE ACCIÓN</v-btn>
+          <v-btn block color="primary" @click="goPlan" :loading="loading" small
+            >PLAN DE ACCIÓN</v-btn
+          >
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -250,10 +288,30 @@ import RadioGroupbasic from "@/components/radio/RadioGroupbasic";
 import { itemsRiesgo } from "@/utils/default.js";
 export default {
   $_veeValidate: {
-    validator: "new"
+    validator: "new",
   },
   data() {
     return {
+      areasdata: "",
+      gerenciasdata: "",
+      responsables: [
+        {
+          responsable: "Ricardo Caballero",
+          id_responsable: 1,
+        },
+      ],
+      gerenciasitem: [
+        {
+          gerencias: "ADMINISTRACION",
+          id: 1,
+        },
+      ],
+      areasitem: [
+        {
+          area: "RRHH",
+          id_gerencia: 1,
+        },
+      ],
       dialog: false,
       switch1: false,
 
@@ -267,47 +325,47 @@ export default {
           id: 1,
           icon: require("@/assets/tarjeta_export.png"),
           text: "Medio Ambiente",
-          state: true
+          state: true,
         },
         {
           id: 2,
           icon: require("@/assets/tarjeta_export.png"),
           text: "Seguridad",
-          state: false
-        }
+          state: false,
+        },
       ],
       itemsClasificacion: [
         {
           id: 1,
           icon: null,
           text: "Comportamiento de riesgo",
-          state: true
+          state: true,
         },
         {
           id: 2,
           icon: null,
           text: "Condición de riesgo",
-          state: false
+          state: false,
         },
         {
           id: 3,
           icon: null,
           text: "Casi accidente",
-          state: false
+          state: false,
         },
         {
           id: 4,
           icon: null,
           text: "Derecho a decir no",
-          state: false
-        }
+          state: false,
+        },
       ],
-      loading: false
+      loading: false,
     };
   },
   components: {
     RadioGroup,
-    RadioGroupbasic
+    RadioGroupbasic,
   },
   filters: {
     idNumero(val) {
@@ -317,7 +375,7 @@ export default {
         r = "0" + r;
       }
       return r;
-    }
+    },
   },
   computed: {
     idNumero() {
@@ -333,13 +391,13 @@ export default {
       "datos",
       "gerencias",
       "personal",
-      "locales"
+      "locales",
     ]),
     itemsRiesgoAmbiente() {
-      return itemsRiesgo.filter(val => val.tipo == 1);
+      return itemsRiesgo.filter((val) => val.tipo == 1);
     },
     itemsRiesgoSeguridad() {
-      return itemsRiesgo.filter(val => val.tipo == 2);
+      return itemsRiesgo.filter((val) => val.tipo == 2);
     },
     check_in: {
       get() {
@@ -349,10 +407,10 @@ export default {
         console.log("horarararar");
 
         this.$store.commit("incidencias/UPDATE_DATOS", {
-          check_in: format(v, "YYYY-MM-DD")
+          check_in: format(v, "YYYY-MM-DD"),
         });
-      }
-    }
+      },
+    },
   },
   methods: {
     goPlan() {
@@ -375,7 +433,7 @@ export default {
           this.datos.riesgo &&
           this.datos.descripcion &&
           this.datos.potencial_de_gravedad */
-      this.$validator.validateAll().then(async result => {
+      this.$validator.validateAll().then(async (result) => {
         if (result) {
           console.log("step: " + val);
           this.dialog = true;
@@ -384,14 +442,14 @@ export default {
         }
       });
       /* this.active = val; */
-    }
+    },
   },
   async created() {
     this.$store.commit("incidencias/RESET_DATOS");
-    await this.$store.dispatch("incidencias/getAreas");
-    await this.$store.dispatch("incidencias/getGerencias");
-    await this.$store.dispatch("incidencias/getPersonal");
-  }
+    // await this.$store.dispatch("incidencias/getAreas");
+    // await this.$store.dispatch("incidencias/getGerencias");
+    // await this.$store.dispatch("incidencias/getPersonal");
+  },
 };
 </script>
 <style scoped>

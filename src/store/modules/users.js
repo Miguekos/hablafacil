@@ -6,7 +6,7 @@ const state = {
     password: null,
     role: 0,
     id: null,
-    isAuth: false
+    isAuth: true
   }
 };
 

@@ -108,17 +108,20 @@ export default {
           };
           console.log(data);
 
-          const user = await this.$store.dispatch("users/goLogin", data);
+          // const user = await this.$store.dispatch("users/goLogin", data);
           /* if login sucess */
-          if (!user) {
-            console.log("El usuario no existe");
-            this.loading = false;
-            this.snackbar = true;
-          } else {
-            this.$store.commit("users/UPDATE_USER", { ...user, isAuth: true });
-            this.loading = false;
-            this.$router.push("/habla-facil");
-          }
+          this.$router.push("/habla-facil");
+          this.$store.commit("users/UPDATE_USER", { isAuth: true });
+          this.loading = false;
+          // if (!user) {
+          //   console.log("El usuario no existe");
+          //   this.loading = false;
+          //   this.snackbar = true;
+          // } else {
+          //   this.$store.commit("users/UPDATE_USER", { ...user, isAuth: true });
+          //   this.loading = false;
+          //   this.$router.push("/habla-facil");
+          // }
         }
       });
     },

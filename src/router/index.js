@@ -28,15 +28,16 @@ const router = new Router({
     {
       path: "/login",
       component: LoginApp,
+      // component: () => import("@/views/Dashboard/SuperAdmin"),
       name: "Login",
-      beforeEnter: (to, from, next) => {
-        const user = store.state.users.user;
-        if (user.isAuth) {
-          return next("/habla-facil");
-        } else {
-          return next();
-        }
-      }
+      // beforeEnter: (to, from, next) => {
+      //   const user = store.state.users.user;
+      //   if (user.isAuth) {
+      //     return next("/habla-facil");
+      //   } else {
+      //     return next();
+      //   }
+      // }
     },
     {
       path: "/habla-facil",
@@ -98,8 +99,8 @@ router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
     // this route requires auth, check if logged in
     // if not, redirect to login page.
-    const user = store.state.users.user;
-    if (!user.isAuth) {
+    const user = true;
+    if (!user) {
       next({
         path: "/login",
         query: { redirect: to.fullPath }

@@ -34,7 +34,7 @@
         </v-list-tile-avatar>
 
         <v-list-tile-content>
-          <v-list-tile-title>{{ usuarioLocal.name }} {{ usuarioLocal.lastname }}</v-list-tile-title>
+          <!-- <v-list-tile-title>{{ usuarioLocal.name }} {{ usuarioLocal.lastname }}</v-list-tile-title> -->
         </v-list-tile-content>
 
         <!--
@@ -73,7 +73,7 @@ export default {
         {
           icon: "dashboard",
           text: "DASHBOARD",
-          to: this.isAdmin ? "/dashboard/admin" : "/dashboard/user"
+          to: this.isAdmin ? "/dashboard/admin" : "/dashboard/admin"
         },
         {
           icon: "edit",
@@ -96,7 +96,7 @@ export default {
   computed: {
     isAdmin() {
       console.log(this.$store.state.users);
-      if (this.$store.state.users.user.role == 2) {
+      if (2 == 2) {
         return true;
       } else {
         return false;

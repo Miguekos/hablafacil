@@ -270,17 +270,17 @@ export default {
   },
   async created() {
     console.log("created");
-    const contadores = await this.$store.dispatch("dashboard/conAndAtr");
-    this.chart2.series[0].data = contadores.count_ugb;
-    this.items[0].count = contadores.totales[0];
-    this.items[1].count = contadores.totales[1];
-    this.items[2].count = contadores.totales[2];
-    this.series[0].data = contadores.totales;
-    this.multipleSeries.series[0].data = contadores.multiseries1;
-    this.multipleSeries.series[1].data = contadores.multiseries2;
-    this.multipleSeries.series[2].data = contadores.multiseries3;
-    this.multipleSeries.series[3].data = contadores.multiseries4;
-    console.log(this.chart2.series[0].data);
+    // const contadores = await this.$store.dispatch("dashboard/conAndAtr");
+    // this.chart2.series[0].data = contadores.count_ugb;
+    // this.items[0].count = contadores.totales[0];
+    // this.items[1].count = contadores.totales[1];
+    // this.items[2].count = contadores.totales[2];
+    // this.series[0].data = contadores.totales;
+    // this.multipleSeries.series[0].data = contadores.multiseries1;
+    // this.multipleSeries.series[1].data = contadores.multiseries2;
+    // this.multipleSeries.series[2].data = contadores.multiseries3;
+    // this.multipleSeries.series[3].data = contadores.multiseries4;
+    // console.log(this.chart2.series[0].data);
     // console.log(typeof(contadores));
     // console.log(contadores)
     // console.log(contadores[0].ID)
